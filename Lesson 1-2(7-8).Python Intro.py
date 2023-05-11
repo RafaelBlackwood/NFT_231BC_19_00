@@ -103,6 +103,9 @@ print(12,"heLLO",True)
 print(type('12 heLLO True'))
 
 input()
+
+number = input('Write number')
+
 line = input()
 print('Your result is:', line)
 print(type(line))
@@ -125,9 +128,6 @@ print(logic_1+logic_2)
 
 '''
 
-
-
-
 #Преобразование типов.(Type casting)
 '''
 1. Неявное преобразование- это то преобразование которое происходит в момент выполнения программы
@@ -139,5 +139,20 @@ num_3 = num_1+num_2
 num_1= 10
 num_2= 12.3
 num_3 = float(num_1)+int(num_2)
+'''
+
+
+#Practise:
+#1
+'''Пользователь вводит с клавиатуры три цифры.
+Необходимо создать число, содержащее эти цифры. Например, 
+если с клавиатуры введено 1, 5, 7, тогда нужно сформировать число 157.
+
+number_1 = int(input('Write first number: '))
+number_2 = int(input('Write second number: '))
+number_3 = int(input('Write third number: '))
+number_4 = number_1*100 +number_2*10+number_3
+print(number_4)
+
 '''
 
