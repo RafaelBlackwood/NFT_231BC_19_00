@@ -109,9 +109,17 @@ n — число для расчета факториала
 
 
 '''
-Задание 1.
+#Task 1.
 a,b = int(input()), int(input())
 while a<=b:
     print(a)
     a+=1 
 '''
+'''#Task 2
+
+a = int(input())
+b = int(input())
+while a<=b:
+    if a%2 != 0:
+        print(a)
+    a+=1'''
