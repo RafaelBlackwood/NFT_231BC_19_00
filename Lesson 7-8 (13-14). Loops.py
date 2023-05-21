@@ -59,10 +59,10 @@ while num_1<=num_2:
     print(num_1)
 '''
 
-import random
+'''import random
 
 rand = random.randint(1,100)
-print(rand)
+print(rand)'''
 
 #Practcie
 '''
@@ -123,3 +123,4 @@ print(rand)
 1672 = 1**4 + 6**4 +7**4+2**4
 
 '''
+
