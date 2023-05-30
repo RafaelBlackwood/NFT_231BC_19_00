@@ -16,10 +16,9 @@ print('Грехи других '
 
 print('C:\\Users\\Aghashirinov_r\\Documents\\Visual Studio 2019')
 '''
+
 #«Сырые строки».
-'''
-print(r'C:\\Users\\Aghashirinov_r\\Documents\\Visual Studio 2019')
-'''
+#print(r'C:\Users\Aghashirinov_r\Documents\Visual Studio 2019')
 
 
 #Форматированный вывод.
@@ -32,7 +31,7 @@ num_2 = int(input())
 
 for i in range(num_1,num_2+1):
     for j in range(num_1,num_2+1):
-        a = f'{i:} * {j}  your result is = {i*j}'
+        a = f'{i} * {j}  your result is = {i*j}'
         print(a)
     print()
 
@@ -73,7 +72,6 @@ print(f"{number_1:.1%}")
 '''
 
 #Модуль string.
-
 '''from string import *
 
 STR_text= '1234213 a,dADqE24'
@@ -83,6 +81,7 @@ for i in STR_text:
         print('yes')
 
 print(punctuation)'''
+
 #Sep,End
 #print('Hello','World',111110,sep ='!!!!',end= 'IT IS THE END')
 
@@ -107,6 +106,7 @@ Task 3
 тексте.
 '''
 
+'''
 while True:
     num_1 = int(input())
     num_2 = int(input())
@@ -126,3 +126,4 @@ while True:
     elif symbol =='*':
         print(num_1*num_2)
 
+'''
