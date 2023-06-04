@@ -183,9 +183,5 @@ for i in range(len(list_el)):#range(5)
 print(f'Min = {min_el} and Max = {max_el}')'''
 
 
-#Генераторы списков.
 
-#Поиск элемента.
-
-#Матрицы.
 
