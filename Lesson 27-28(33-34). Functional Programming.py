@@ -81,8 +81,8 @@ print(list(zip(str_1,str_2)))
 '''
 
 
-
-def my_map(function,sequence):
+#Map
+'''def my_map(function,sequence):
     new_list =[]
     for iterator in sequence:
         new_list.append(function(iterator))
@@ -90,8 +90,11 @@ def my_map(function,sequence):
     return new_list
 
 list_el = [1,2,3,4,5]
-print(my_map(lambda element: element**2,list_el))
+print(my_map(lambda element: element**2,list_el))'''
 
+
+#Reduce
+'''
 def my_reduce(function,sequence, initial = 0):
     for iterator in sequence:
         initial = function(initial,iterator)
@@ -100,3 +103,18 @@ def my_reduce(function,sequence, initial = 0):
     return initial
 
 print(my_reduce(lambda first,second: first+second, list_el))
+'''
+
+#Filter
+'''
+def my_filter(function,sequence):
+    new_list =[]
+    for iterator in sequence:
+        if function(iterator):
+            new_list.append(iterator)
+
+    return new_list
+
+list_el = [1,2,3,4,5]
+print(my_filter(lambda element: element%2==0,list_el))
+'''
