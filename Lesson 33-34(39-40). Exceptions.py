@@ -106,7 +106,7 @@ except Exception as e:
 5. Обработайте исключение при работе со строками(допустим выход за пределы индексации или не корректный ввод)
 6. Обработайте исключение при работе с конвертацией типов данных.
 '''
-from math import sqrt
+'''from math import sqrt
 
 try:
     number = int(input())
@@ -116,14 +116,35 @@ try:
 except Exception as e:
     print(f'Your error is {e}\nYou cannot have a negative number under a square root')
 
-
+'''
 
 # Генерация исключений.
 '''
 Оператор raise нужен,чтобы вручную сгенерировать то или иное исключение
 
-'''
+Оператор raise можно использовать и за пределами конструкции try except
 
+
+num_1 = int(input())
+num_2 = int(input())
+if num_2==0:
+    raise Exception('Pls dont devide by zero or you will not get Khinkhalli')
+
+print('I love food')
+
+'''
+'''
+try:
+    num_1 = int(input())
+    num_2 = int(input())
+    if num_2==0:
+        raise Exception('Pls dont devide by zero or you will not get Khinkhalli')
+except Exception as e:
+    print(e)
+    
+    
+print('I love food')
+'''
 
 # Practise:
 '''
