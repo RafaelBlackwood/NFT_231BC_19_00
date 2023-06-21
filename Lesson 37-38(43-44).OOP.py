@@ -300,8 +300,8 @@ class Family(Child1, Child2):
         Child2.__init__(self, name, m_name, hair_color)
 
     def introduce(self):
-        child1_info = Child1.info(self)  # вызов метода info() из Child1
-        child2_info = Child2.info(self)  # вызов метода info() из Child2
+        child1_info = Child1.info(self)
+        child2_info = Child2.info(self)
         return f'Family Information:\n{child1_info}\n{child2_info}'
 
 child1 = Child1('Pablo', 'Al\' Kapone', 'brown')
