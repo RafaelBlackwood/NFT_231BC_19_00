@@ -264,7 +264,7 @@ class Fruit(Shop):
         self.fruit_name = fruit_name
 '''
 
-
+'''
 class Father:
     def __init__(self, f_name, eye_color):
         self.f_name = f_name
@@ -275,41 +275,24 @@ class Mother:
         self.m_name = m_name
         self.hair_color = hair_color
 
-class Child1(Father):
-    def __init__(self, name, f_name, eye_color):
-        super().__init__(f_name, eye_color)
+class Child(Father,Mother):
+    def __init__(self, name, f_name,m_name, eye_color,hair_color):
+        Father.__init__(self, f_name, eye_color)
+        Mother.__init__(self,m_name, hair_color)
         self.name = name
 
     def info(self):
         return f'\nFather: {self.f_name}, {self.eye_color}' \
-               f'\nChild: {self.name}'
-
-class Child2(Mother):
-    def __init__(self, name, m_name, hair_color):
-        super().__init__(m_name, hair_color)
-        self.name = name
-
-    def info(self):
-        return f'\nMother: {self.m_name}, {self.hair_color}' \
+               f'\nMother: {self.m_name}, {self.hair_color}' \
                f'\nChild: {self.name}'
 
 
-class Family(Child1, Child2):
-    def __init__(self, name, f_name, eye_color, m_name, hair_color):
-        Child1.__init__(self, name, f_name, eye_color)
-        Child2.__init__(self, name, m_name, hair_color)
+father = Father( 'Al\' Kapone', 'brown')
+mother = Mother( 'Tereza', 'black')
 
-    def introduce(self):
-        child1_info = Child1.info(self)
-        child2_info = Child2.info(self)
-        return f'Family Information:\n{child1_info}\n{child2_info}'
-
-child1 = Child1('Pablo', 'Al\' Kapone', 'brown')
-child2 = Child2('Migel', 'Tereza', 'black')
-
-family = Family(child1.name, child1.f_name, child1.eye_color, child2.m_name, child2.hair_color)
-print(family.introduce())
-
+child = Child('Barbos',father.f_name, mother.m_name,father.eye_color, mother.hair_color)
+print(child.info())
+'''
 #Practise
 '''
 1. Создайте класс Human, который будет содержать информацию о человеке.
@@ -339,3 +322,19 @@ print(family.introduce())
 '''
 
 
+#MRO- method resolution order
+
+'''
+class A:
+    def __init__(self):
+        print('class A')
+class B:
+    def __init__(self):
+        print('class B')
+class C:
+    def __init__(self):
+        print('class C')
+class D(A,C,B):
+    pass
+
+d = D()'''
