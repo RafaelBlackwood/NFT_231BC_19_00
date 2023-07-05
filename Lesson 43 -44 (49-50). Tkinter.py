@@ -98,30 +98,44 @@ def message():
 btn_warning = Button(root,text='Show warning' ,command=message)
 btn_warning.pack()'''
 #Grid
-entry = Entry(width=45,bd = 4,justify = RIGHT).grid(row = 0, column=0,columnspan=3,padx=10)
+def vvod(symbol):
+    entry.insert(END,symbol)
 
-btn_1 = Button(text = '1').grid(row =1,column=0)
+btn_c = Button(text= 'C',width=13,height=2)
 
-btn_2 = Button(text = '2').grid(row = 1,column=1)
 
-btn_3 = Button(text = '3').grid(row = 1,column=2)
+entry = Entry(width=45,bd = 3)
+entry.grid(row = 0,column=0,columnspan=3,padx=10)
 
-btn_4 = Button(text = '4').grid(row = 2,column=0)
+btn_1 = Button(text= '1',width=13,height=2,command=lambda : vvod('1')).grid(row=1,column=0)
 
-btn_5 = Button(text = '5').grid(row = 2, column= 1)
+btn_2 = Button(text= '2',width=13,height=2,command=lambda : vvod('2')).grid(row=1,column=1)
 
-btn_6 = Button(text = '6').grid(row = 2, column=2)
+btn_3 = Button(text= '3',width=13,height=2,command=lambda : vvod('3')).grid(row=1,column=2)
 
-btn_7 = Button(text = '7').grid(row = 3,column=0)
+btn_4 = Button(text= '4',width=13,height=2,command=lambda : vvod('4')).grid(row=2,column=0)
 
-btn_8 = Button(text = '8').grid(row = 3,column=1)
+btn_5 = Button(text= '5',width=13,height=2,command=lambda : vvod('5')).grid(row=2,column=1)
 
-btn_9 = Button(text = '9').grid(row = 3,column=2)
+btn_6 = Button(text= '6',width=13,height=2,command=lambda : vvod('6')).grid(row=2,column=2)
 
-btn_0 = Button(text = '0').grid(row = 4,column=0)
+btn_7 = Button(text= '7',width=13,height=2,command=lambda : vvod('7')).grid(row=3,column=0)
 
-btn_eq = Button(text = '=').grid(row = 4, column=1, columnspan=3)
+btn_8 = Button(text= '8',width=13,height=2,command=lambda : vvod('8')).grid(row=3,column=1)
 
+btn_9 = Button(text= '9',width=13,height=2,command=lambda : vvod('9')).grid(row=3,column=2)
+
+btn_0 = Button(text= '0',width=13,height=2,command=lambda : vvod('0')).grid(row=4,column=1)
+
+btn_eq = Button(text= '=',width=13,height=2,command=lambda : equal()).grid(row=4,column=2)
+
+btn_plus = Button(text= '+',width=13,height=2,command= lambda: vvod('+')).grid(row=4,column=3)
+
+btn_minus = Button(text= '-',width=13,height=2,command= lambda: vvod('-')).grid(row=3,column=3)
+
+btn_umnozh = Button(text= '*',width=13,height=2,command= lambda: vvod('*')).grid(row=2,column=3)
+
+btn_deleniye = Button(text= '/',width=13,height=2,command= lambda: vvod('/')).grid(row=1,column=3)
 root.mainloop()
 
 '''
