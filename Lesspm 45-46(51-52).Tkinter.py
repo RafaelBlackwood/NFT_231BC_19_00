@@ -67,7 +67,7 @@ class Login(Frame):
         super().__init__(master)
         master.title('Login window')
         master.iconbitmap(default='icons\computer.ico')
-        master.geometry('300x150+600+200')
+        master.geometry('350x150+600+200')
         self.widgets()
 
     def widgets(self):
@@ -76,16 +76,20 @@ class Login(Frame):
 
 
         self.entry_name = Entry(self.master)
+        self.entry_name.grid(row = 0, column=1)
 
         self.entry_password = Entry(self.master)
+        self.entry_password.grid(row = 1, column=1)
 
 
-        self.btn_log = Button(self.master,text='Login', command = self.log)
 
         self.btn_reg = Button(self.master,text='Registration', command = self.reg)
+        self.btn_reg.grid(row =2 , column=0,pady=20)
+        self.btn_log = Button(self.master, text='Login', command=self.log)
+        self.btn_log.grid(row=2, column=2, pady=20)
 
         self.check_pass = Checkbutton(self.master, text='Show password',command=self.show)
-
+        self.check_pass.grid(row = 1, column = 2)
     def log(self):
         ...
 
