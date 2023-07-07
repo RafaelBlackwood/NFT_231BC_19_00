@@ -71,6 +71,8 @@ class Login(Frame):
         self.widgets()
 
     def widgets(self):
+        self.var = IntVar()
+
         lbl_name = Label(self.master, text = 'Username\Email').grid(row = 0, column = 0, padx= 10,pady=20)
         lbl_pass = Label(self.master, text = 'Password').grid(row = 1, column = 0, padx= 10)
 
@@ -78,9 +80,8 @@ class Login(Frame):
         self.entry_name = Entry(self.master)
         self.entry_name.grid(row = 0, column=1)
 
-        self.entry_password = Entry(self.master)
+        self.entry_password = Entry(self.master,show = '*')
         self.entry_password.grid(row = 1, column=1)
-
 
 
         self.btn_reg = Button(self.master,text='Registration', command = self.reg)
@@ -88,8 +89,10 @@ class Login(Frame):
         self.btn_log = Button(self.master, text='Login', command=self.log)
         self.btn_log.grid(row=2, column=2, pady=20)
 
-        self.check_pass = Checkbutton(self.master, text='Show password',command=self.show)
+        self.check_pass = Checkbutton(self.master, text='Show password',variable= self.var,command=self.show)
         self.check_pass.grid(row = 1, column = 2)
+
+
     def log(self):
         ...
 
@@ -97,7 +100,10 @@ class Login(Frame):
         ...
 
     def show(self):
-        ...
+        if self.var.get() == 1:
+            self.entry_password['show'] = ''
+        else:
+            self.entry_password['show'] = '*'
 
 class Registration(Frame):
 
