@@ -63,6 +63,8 @@ root.mainloop()'''
 from tkinter import *
 from tkinter.messagebox import *
 
+
+#1
 class Login(Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -132,3 +134,72 @@ if __name__ == '__main__':
     root = Tk()
     log = Login(root)
     log.mainloop()
+
+
+#2
+'''class LoginWindow(Frame):
+    def __init__(self,master = None):
+        super().__init__(master)
+        self.master1= master
+        self.master1.title('Login')
+        self.master1.geometry('400x100+600+220')
+        self.create_widgets()
+
+    def create_widgets(self):
+        self.var = IntVar()
+        lbl_login = Label(self.master1,text = 'Login').grid(row = 0,column=0,padx = 10)
+        lbl_password = Label(self.master1,text = 'Password').grid(row = 1,column=0,padx = 10)
+
+        self.entry_login = Entry(self.master1,bd = 5)
+        self.entry_login.grid(row=0,column=1,padx=10)
+        self.entry_password = Entry(self.master1,bd = 5, show = '#')
+        self.entry_password.grid(row=1,column=1,padx=10)
+        self.check_btn = Checkbutton(self.master1, text = 'Show password',variable=self.var ,command=self.show)
+        self.check_btn.grid(row=1,column=2,padx = 5)
+
+        self.btn_login =Button(self.master1,text = 'Login',command=self.login)
+        self.btn_login.grid(row = 2,column=2,columnspan=3, sticky=NE)
+        self.btn_exit =Button(self.master1,text = 'Exit',command=self.exit)
+        self.btn_exit.grid(row = 2,column=0, sticky=NW)
+
+    def login(self):
+        log = self.entry_login.get()
+        psw = self.entry_password.get()
+
+        if log == 'Admin' and psw =='admin':
+            self.master1.withdraw()
+            self.new_window = Toplevel(self.master1)
+            self.menu_window = MenuWindow(self.new_window)
+
+    def exit(self):
+        self.master1.destroy()
+
+    def show(self):
+        if self.var.get()==1:
+            self.entry_password['show'] = ''
+        else:
+            self.entry_password['show']='*'
+
+
+class MenuWindow(Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master2 = master
+        self.master2.title('Menu')
+        self.master2.geometry('300x400+600+220')
+        self.create()
+
+    def create(self):
+        lbl = Label(self.master2, text = 'Loged').pack()
+        btn = Button(self.master2,text = 'Return',command= self.Return).pack()
+
+    def Return(self):
+        self.master2.destroy()
+        self.new_Login= Toplevel()
+        self.login = LoginWindow(self.new_Login)
+
+
+if __name__ == '__main__':
+    root = Tk()
+    log_window = LoginWindow(root)
+    log_window.mainloop()'''
