@@ -12,10 +12,8 @@ def switch():
     else:
         entry_password['show'] = '*'
 
-Lbl_name = Label(root, text='Username: ')
-Lbl_name.place(relx = 0.09, rely = 0.09)
-Lbl_password = Label(root, text='Password: ')
-Lbl_password.place(relx = 0.09, rely = 0.29)
+Lbl_name = Label(root, text='Username: ').place(relx = 0.09, rely = 0.09)
+Lbl_password = Label(root, text='Password: ').place(relx = 0.09, rely = 0.29)
 
 entry_name = Entry(root)
 entry_name.place(relx = 0.09, rely=0.19)
