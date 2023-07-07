@@ -94,7 +94,14 @@ class Login(Frame):
 
 
     def log(self):
-        ...
+        if self.entry_name.get()=='admin' and self.entry_password.get() == 'admin':
+            self.master.withdraw()
+            self.menu = Menu(self.master)
+            self.menu.return_to_login = self.return_to_login
+
+
+    def return_to_login(self):
+        self.master.deiconify
 
     def reg(self):
         ...
@@ -110,8 +117,20 @@ class Registration(Frame):
     ...
 
 class Menu(Frame):
-    ...
+    def __init__(self, master):  # master = root
+        super().__init__(master)
+        master.title('Menu window')
+        master.iconbitmap(default='icons\computer.ico')
+        master.geometry('800x550+600+200')
+        self.create()
 
+    def create(self):
+        btn_back = Button(self,text = 'Return to previous page', command = self.return_to_login)
+        btn_back.pack()
+
+    def return_to_login(self):
+        self.destroy()
+        self.return_to_login()
 
 if __name__ == '__main__':
     root = Tk()
