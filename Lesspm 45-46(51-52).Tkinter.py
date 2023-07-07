@@ -62,49 +62,43 @@ root.mainloop()'''
 
 from tkinter import *
 from tkinter.messagebox import *
-class Login(Frame):
-    def __init__(self,master): #master = root
-        super().__init__(master)
-        master.title('Login window')
-        master.iconbitmap(default='icons\computer.ico')
-        master.geometry('350x150+600+200')
-        self.widgets()
 
-    def widgets(self):
+class Login(Frame):
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.master.title('Login')
+        self.master.iconbitmap(default='icons/computer.ico')
+        self.master.geometry('400x100+600+220')
+        self.create_widgets()
+
+    def create_widgets(self):
         self.var = IntVar()
 
-        lbl_name = Label(self.master, text = 'Username\Email').grid(row = 0, column = 0, padx= 10,pady=20)
-        lbl_pass = Label(self.master, text = 'Password').grid(row = 1, column = 0, padx= 10)
+        lbl_login = Label(self.master, text='Login').grid(row=0, column=0, padx=10)
+        lbl_password = Label(self.master, text='Password').grid(row=1, column=0, padx=10)
+
+        self.entry_login = Entry(self.master, bd=5)
+        self.entry_login.grid(row=0, column=1, padx=10)
+
+        self.entry_password = Entry(self.master, bd=5, show='*')
+        self.entry_password.grid(row=1, column=1, padx=10)
+
+        self.check_btn = Checkbutton(self.master, text='Show password', variable=self.var, command=self.show)
+        self.check_btn.grid(row=1, column=2, padx=5)
+
+        self.btn_login = Button(self.master, text='Login', command=self.login)
+        self.btn_login.grid(row=2, column=2)
 
 
-        self.entry_name = Entry(self.master)
-        self.entry_name.grid(row = 0, column=1)
+    def login(self):
+        log = self.entry_login.get()
+        psw = self.entry_password.get()
 
-        self.entry_password = Entry(self.master,show = '*')
-        self.entry_password.grid(row = 1, column=1)
-
-
-        self.btn_reg = Button(self.master,text='Registration', command = self.reg)
-        self.btn_reg.grid(row =2 , column=0,pady=20)
-        self.btn_log = Button(self.master, text='Login', command=self.log)
-        self.btn_log.grid(row=2, column=2, pady=20)
-
-        self.check_pass = Checkbutton(self.master, text='Show password',variable= self.var,command=self.show)
-        self.check_pass.grid(row = 1, column = 2)
-
-
-    def log(self):
-        if self.entry_name.get()=='admin' and self.entry_password.get() == 'admin':
+        if log == 'Admin' and psw == 'admin':
             self.master.withdraw()
-            self.menu = Menu(self.master)
-            self.menu.return_to_login = self.return_to_login
-
-
-    def return_to_login(self):
-        self.master.deiconify
-
-    def reg(self):
-        ...
+            self.menu_window = Menu(self.master)
+            self.menu_window.return_to_login = self.return_to_login
 
     def show(self):
         if self.var.get() == 1:
@@ -112,25 +106,27 @@ class Login(Frame):
         else:
             self.entry_password['show'] = '*'
 
-class Registration(Frame):
+    def return_to_login(self):
 
-    ...
+        self.master.deiconify()
 
-class Menu(Frame):
-    def __init__(self, master):  # master = root
+
+
+class Menu(Toplevel):
+    def __init__(self, master=None):
         super().__init__(master)
-        master.title('Menu window')
-        master.iconbitmap(default='icons\computer.ico')
-        master.geometry('800x550+600+200')
+        self.title('Menu')
+        self.geometry('300x400+600+220')
         self.create()
 
     def create(self):
-        btn_back = Button(self,text = 'Return to previous page', command = self.return_to_login)
-        btn_back.pack()
+        lbl = Label(self, text='Logged').pack()
+        btn = Button(self, text='Return', command=self.return_to_login).pack()
 
     def return_to_login(self):
         self.destroy()
         self.return_to_login()
+
 
 if __name__ == '__main__':
     root = Tk()
