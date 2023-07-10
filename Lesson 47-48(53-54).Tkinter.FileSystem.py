@@ -1,91 +1,3 @@
-from tkinter import *
-from tkinter.messagebox import *
-
-def choose_option():
-    temp = entry_menu.get()
-
-    if temp == '1':
-        frame_menu.forget()
-        frame_registration.place(relx=0, rely=0)
-    elif temp =='2':
-        ...
-    elif temp ==  '3':
-        root.destroy()
-    else:
-        showerror('Wrong option', 'Please choose options from 1 to 3')
-
-def BackToMenu():
-    frame_registration.place_forget()
-    frame_menu.place(rely=0,relx=0)
-
-
-root = Tk()
-root.iconbitmap(default='icons/computer.ico')
-root.geometry('650x650+600+200')
-root.resizable(False,False)
-
-
-#First Menu
-frame_menu = Frame(width=650,height=650, bg= '#a36739')
-frame_menu.place(relx = 0,rely = 0)
-
-lbl_menu = Label(frame_menu, text = 'Choose option: 1) New User. 2)Login. 3) Exit', font='Arial 18')
-lbl_menu.place(relx=0.1 , rely=0.3)
-
-entry_menu = Entry(frame_menu, bd = 5, width= 40)
-entry_menu.place(relx=0.3,rely=0.38)
-
-btn_menu = Button(frame_menu, bd = 2, text='Select option',height=3,width=20, command=choose_option)
-btn_menu.place(relx = 0.75,rely=0.38)
-
-#Second menu
-
-frame_registration = Frame(width=650,height=650, bg= '#733f18')
-
-
-label_name = Label(frame_registration, text="Name:")
-label_name.place(x=20, y=20)
-entry_name = Entry(frame_registration, bd=5)
-entry_name.place(x=100, y=20)
-
-label_surname = Label(frame_registration, text="Surname:")
-label_surname.place(x=20, y=60)
-entry_surname = Entry(frame_registration, bd=5)
-entry_surname.place(x=100, y=60)
-
-label_fathername = Label(frame_registration, text="Fathername:")
-label_fathername.place(x=20, y=100)
-entry_fathername = Entry(frame_registration, bd=5)
-entry_fathername.place(x=100, y=100)
-
-label_email = Label(frame_registration, text="Email:")
-label_email.place(x=20, y=140)
-entry_email = Entry(frame_registration, bd=5)
-entry_email.place(x=100, y=140)
-
-label_login = Label(frame_registration, text="Login:")
-label_login.place(x=20, y=180)
-entry_login = Entry(frame_registration, bd=5)
-entry_login.place(x=100, y=180)
-
-label_password = Label(frame_registration, text="Password:")
-label_password.place(x=20, y=220)
-entry_password = Entry(frame_registration, bd=5, show='*')
-entry_password.place(x=100, y=220)
-
-label_age = Label(frame_registration, text="Age:")
-label_age.place(x=20, y=260)
-entry_age = Entry(frame_registration, bd=5)
-entry_age.place(x=100, y=260)
-
-btn_save = Button(frame_registration, text="Save", bg="brown", fg="white")
-btn_save.place(x=20, y=300)
-
-btnPrevious = Button(frame_registration, text="Previous", bg="brown", fg="white", height=6, command=BackToMenu)
-btnPrevious.place(x=592, y=544)
-
-root.mainloop()
-
 # 1.Файлы.
 '''
 Файл — это именованная область, расположенная во внешней памяти,
@@ -93,7 +5,6 @@ root.mainloop()
 ■ имя файла (на определенном диске), которое позволяет программам идентифицировать файл
 ■ длина файла может быть ограничена только объемом диска.
 '''
-import fileinput
 
 # 1.1Типы файлов, текстовые и бинарные.
 '''
@@ -290,4 +201,139 @@ dump(obj, file): записывает объект obj в бинарный фа�
 load(file): считывает данные из бинарного файла в объект
 '''
 
+'''
+from pickle import *
 
+with open('Files/user_data.json','wb') as FileHandler:
+    dump('Hello', FileHandler)
+    dump('Khinkhali', FileHandler)
+
+with open('Files/user_data.json','ab') as FileHandler:
+    dump('Rafael', FileHandler)
+    dump('Hasan', FileHandler)
+
+
+with open('Files/user_data.json','rb') as FileHandler:
+    temp = load(FileHandler)
+    print(temp)
+    print(load(FileHandler))'''
+
+
+
+from tkinter import *
+from tkinter.messagebox import *
+from pickle import *
+
+class Person:
+    def __init__(self,email,login,password):
+        self.__email = email
+        self.__login = login
+        self.__password = password
+
+    def get_email(self):
+        return self.__email
+    def get_login(self):
+        return self.__login
+    def get_password(self):
+        return self.__password
+
+    def set_email(self,item):
+        self.__email = item
+    def set_email(self,item):
+        self.__login = item
+    def set_email(self,item):
+        self.__password = item
+
+
+def SaveRegInfo():
+    login = entry_login.get()
+    email = entry_email.get()
+    password = entry_password.get()
+
+    person = Person(email,login,password)
+
+    person_data = {
+        'login': person.get_login(),
+        'email': person.get_email(),
+        'password': person.get_password()
+    }
+
+    with open('Files/user_data.json','wb') as FileHandler:
+        dump(person_data,FileHandler)
+    showinfo('Success', 'You registered')
+
+def LoadRegInfo():
+    with open('Files/user_data.json','rb') as FileHandler:
+        temp = load(FileHandler)
+
+    person = Person(
+        temp['email'],
+        temp['login'],
+        temp['password']
+    )
+    return person
+
+
+def choose_option():
+    temp = entry_menu.get()
+
+    if temp == '1':
+        frame_menu.forget()
+        frame_registration.place(relx=0, rely=0)
+    elif temp =='2':
+        ...
+    elif temp ==  '3':
+        root.destroy()
+    else:
+        showerror('Wrong option', 'Please choose options from 1 to 3')
+
+def BackToMenu():
+    frame_registration.place_forget()
+    frame_menu.place(rely=0,relx=0)
+
+
+root = Tk()
+root.iconbitmap(default='icons/computer.ico')
+root.geometry('650x650+600+200')
+root.resizable(False,False)
+
+
+#First Menu
+frame_menu = Frame(width=650,height=650, bg= '#a36739')
+frame_menu.place(relx = 0,rely = 0)
+
+lbl_menu = Label(frame_menu, text = 'Choose option: 1) New User. 2)Login. 3) Exit', font='Arial 18')
+lbl_menu.place(relx=0.1 , rely=0.3)
+
+entry_menu = Entry(frame_menu, bd = 5, width= 40)
+entry_menu.place(relx=0.3,rely=0.38)
+
+btn_menu = Button(frame_menu, bd = 2, text='Select option',height=3,width=20, command=choose_option)
+btn_menu.place(relx = 0.75,rely=0.38)
+
+#Second menu
+
+frame_registration = Frame(width=650,height=650, bg= '#733f18')
+
+label_email = Label(frame_registration, text="Email:")
+label_email.place(x=20, y=140)
+entry_email = Entry(frame_registration, bd=5)
+entry_email.place(x=100, y=140)
+
+label_login = Label(frame_registration, text="Login:")
+label_login.place(x=20, y=180)
+entry_login = Entry(frame_registration, bd=5)
+entry_login.place(x=100, y=180)
+
+label_password = Label(frame_registration, text="Password:")
+label_password.place(x=20, y=220)
+entry_password = Entry(frame_registration, bd=5, show='*')
+entry_password.place(x=100, y=220)
+
+btn_save = Button(frame_registration, text="Save", bg="brown", fg="white", command=SaveRegInfo)
+btn_save.place(x=20, y=300)
+
+btnPrevious = Button(frame_registration, text="Previous", bg="brown", fg="white", height=6, command=BackToMenu)
+btnPrevious.place(x=592, y=544)
+
+root.mainloop()
