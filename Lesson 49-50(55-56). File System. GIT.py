@@ -48,6 +48,7 @@ a+ - Открытие текстового файла для чтения и
 
 '''
 
+'''
 
 FileHandler = open('test.txt','w')
 
@@ -57,12 +58,25 @@ FileHandler.close()
 
 FileHandler = open('test.txt','a')
 
-FileHandler.write('Python')
-FileHandler.write('LEARN IT!')
+FileHandler.writelines('Python')
+FileHandler.writelines('LEARN IT!')
 FileHandler.close()
 
 FileHandler = open('test.txt','r')
 
-print(FileHandler.readline())
+print(FileHandler.readlines())
 
 FileHandler.close()
+
+with open('test.txt','r') as FileHandler:
+    FileHandler.write('Hello world!')
+'''
+
+
+#GIT
+
+'''
+1. git init - инициализация локального репозитория
+2. git remote add origin ссылка_на_репозиторий_гитхаба - подключения онлайн репозитория к вашему проекту
+3. git add .  - добавляет все файлы проекта в онлайн репозиторий 
+'''

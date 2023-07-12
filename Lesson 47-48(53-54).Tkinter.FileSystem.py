@@ -253,7 +253,7 @@ def SaveRegInfo():
     person = Person(email,login,password)
 
     person_data = {
-        'login': person.get_login(),
+        'name': person.get_login(),
         'email': person.get_email(),
         'password': person.get_password()
     }
