@@ -136,6 +136,9 @@ btn_minus = Button(text= '-',width=13,height=2,command= lambda: vvod('-')).grid(
 btn_umnozh = Button(text= '*',width=13,height=2,command= lambda: vvod('*')).grid(row=2,column=3)
 
 btn_deleniye = Button(text= '/',width=13,height=2,command= lambda: vvod('/')).grid(row=1,column=3)
+
+
+
 root.mainloop()
 
 '''
